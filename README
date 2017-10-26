@@ -1,0 +1,34 @@
+Generalised Likelihood Uncertainty Estimation (GLUE) Framework
+Joost Delsman, Deltares, 2011
+
+Generic Python framework to conduct GLUE analyses
+NOTE: Package is still under construction and undocumented
+
+
+Necessary:
+1) model parameters, that:
+- hold the statistical properties of the a priori parameter space
+- hold the statistical properties of the a posteriori parameter space
+- can return a random value based on the a priori parameter space
+- can accept an evaluated parameter + behavioural / non-behavioural
+    statement from the evaluator
+    
+2) a model, that:
+- returns a result set based on a parameter set
+- can be called successively to explore the parameter space
+- resides outside GLUE
+- (can even be outside python)
+- function or wrapper must return a dict with parameters and
+   their values, recognised by the evaluator
+   
+3) a model evaluator, that:
+- evaluates the model result by a prescribed set of rules
+- assigns behavioural / non-behavioural
+
+4) a framework that:
+- initializes a monte-carlo sequence
+- for each run:
+    - get parameter values
+    - run the model
+    - evaluate the model
+    - store behavioural runs
